@@ -12,18 +12,30 @@
 #' theme_be()
 #' theme_be()
 
-theme_be <- function() {
+#-----------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------
+# DEPENDENCIES
+#-----------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------
 
-    ## Dependencies
-    library(ggplot2)
-    library(ggthemes)
-    library(RColorBrewer)
-    library(extrafont)
+library(ggplot2)
+library(ggthemes)
+library(RColorBrewer)
+library(extrafont)
+
+
+#-----------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------
+# FUNCTION
+#-----------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------
+
+theme_be <- function(axis.lines = TRUE, light.grid = TRUE) {
 
     ## Generate the colors for the chart procedurally with RColorBrewer
     palette <- brewer.pal("Greys", n=9)
     color.background = palette[1]
-    color.grid.major = palette[3]
+    color.grid.major = ifelse(test = (light.grid == T), palette[2], palette[3])
     color.axis.text = palette[6]
     color.axis.title = palette[7]
     color.title = palette[9]
@@ -40,8 +52,11 @@ theme_be <- function() {
         theme(panel.grid.major=element_line(color=color.grid.major,size=.25)) +
         theme(panel.grid.minor=element_line(color=color.grid.major,size=.10)) +
         theme(axis.ticks=element_line(color=color.grid.major, size=.25)) +
-        theme(axis.line.x=element_line(color=color.grid.major, size=1.5),
-              axis.line.y=element_line(color=color.grid.major, size=1.5)) +
+
+        if (axis.lines == T) {
+            theme(axis.line.x=element_line(color=color.grid.major, size=1.5)) +
+            theme(axis.line.y=element_line(color=color.grid.major, size=1.5))
+        } else theme() +
 
         ## Format the legend
         theme(legend.background=element_rect(fill=color.background)) +
@@ -58,4 +73,5 @@ theme_be <- function() {
 
         ## Plot margins
         theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "lines"))
+
 }
