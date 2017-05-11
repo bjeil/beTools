@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: person("Bjørn", "Eilertsen", email = "bj.e@outlook.com", role = c("aut", "cre"))
 Description: A collection of various tools and functions.
 Depends: R (>= 3.3.1)
-Imports: ggplot2, ggthemes, RColorBrewer, extrafont, sqldf
+Imports: ggplot2, ggthemes, RColorBrewer, extrafont, sqldf, proto, RSQLite, Rcpp (>= 0.12.7)
 License: GPLv3
 Encoding: UTF-8
 LazyData: true
