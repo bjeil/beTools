@@ -18,10 +18,10 @@
 #-----------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------
 
-library(ggplot2)
-library(ggthemes)
-library(RColorBrewer)
-library(extrafont)
+#library(ggplot2)
+#library(ggthemes)
+#library(RColorBrewer)
+#library(extrafont)
 
 
 #-----------------------------------------------------------------------------------------------
@@ -32,6 +32,11 @@ library(extrafont)
 
 theme_be <- function(axis.lines = TRUE, light.grid = TRUE) {
 
+    require(ggplot2)
+    require(ggthemes)
+    require(RColorBrewer)
+    require(extrafont)
+    
     ## Generate the colors for the chart procedurally with RColorBrewer
     palette <- brewer.pal("Greys", n=9)
     color.background = palette[1]
