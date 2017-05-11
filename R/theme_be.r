@@ -30,7 +30,7 @@
 #-----------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------
 
-theme_be <- function(axis.lines = TRUE, light.grid = TRUE) {
+theme_be <- function(base_size = 15, axis.lines = TRUE, light.grid = TRUE) {
 
     require(ggplot2)
     require(ggthemes)
@@ -46,7 +46,7 @@ theme_be <- function(axis.lines = TRUE, light.grid = TRUE) {
     color.title = palette[9]
 
     ## Begin construction of chart
-    theme_bw(base_size=15) +
+    theme_bw(base_size = base_size) +
 
         ## Set the entire chart region to a light gray or white color
         theme(panel.background=element_rect(fill=color.background, color=color.background)) +
