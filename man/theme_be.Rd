@@ -4,7 +4,7 @@
 \alias{theme_be}
 \title{A custom theme for ggplot2}
 \usage{
-theme_be()
+theme_be(base_size = 15, axis.lines = TRUE, light.grid = TRUE)
 }
 \arguments{
 \item{No}{parameters}
