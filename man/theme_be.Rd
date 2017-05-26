@@ -4,7 +4,9 @@
 \alias{theme_be}
 \title{A custom theme for ggplot2}
 \usage{
-theme_be(base_size = 15, axis.lines = TRUE, light.grid = TRUE)
+theme_be(base_size = 15, axis.lines = FALSE, light.grid = TRUE,
+  legend.position = "right", legend.background = element_blank(),
+  legend.title = element_text())
 }
 \arguments{
 \item{No}{parameters}

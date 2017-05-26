@@ -19,13 +19,19 @@
 #-----------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------
 
-theme_be <- function(base_size = 15, axis.lines = TRUE, light.grid = TRUE) {
+theme_be <- function(base_size = 15,
+                     axis.lines = FALSE,
+                     light.grid = TRUE,
+                     legend.position = "right",
+                     legend.background = element_blank(),
+                     legend.title = element_text()
+                     ) {
 
     require(ggplot2)
     require(ggthemes)
     require(RColorBrewer)
     require(extrafont)
-    
+
     ## Generate the colors for the chart procedurally with RColorBrewer
     palette <- brewer.pal("Greys", n=9)
     color.background = palette[1]
@@ -53,10 +59,11 @@ theme_be <- function(base_size = 15, axis.lines = TRUE, light.grid = TRUE) {
         } else theme() +
 
         ## Format the legend
-        theme(legend.background=element_rect(fill=color.background)) +
+        theme(legend.background=legend.background) +
         theme(legend.key=element_rect(fill=color.background)) +
         theme(legend.text=element_text(color=color.axis.title)) +
-        theme(legend.position='top') +
+        theme(legend.position=legend.position) +
+        theme(legend.title = legend.title) +
 
         ## Set title and axis labels, and format these and tick marks
         theme(plot.title=element_text(color=color.axis.title, vjust=1.25)) +

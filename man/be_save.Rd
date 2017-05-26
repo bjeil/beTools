@@ -4,17 +4,32 @@
 \alias{be_save}
 \title{Custom settings for ggsave}
 \usage{
-be_save(plot = NULL, filename = "", dpi = 700, size_ppt = "quarter",
-  height = 0, width = 0)
+be_save(plot = NULL, filename = "", folder = "Gfx", dpi = 700,
+  size_ppt = "quarter", height = 0, width = 0)
 }
 \arguments{
-\item{No}{parameters}
+\item{plot}{= plot object (without quotes)
+filename = filename including folder structure from working directory
+dpi = dpi setting
+size_ppt = size parameter, in parts of a powerpoint slide ("quarter", "half high", "half wide", or "full")
+height = custom height
+width = custom width}
 }
 \description{
 Custom preset settings for ggsave, fitting for PPT presentations.
 }
 \examples{
-be_save()
+## After creating plot, use be_save() to save the plot with preset options
+
+## Filename created from the supplied plot object name, folder "./Gfx"
+## created in working directory, plot saved with default (quarter ppt) size.
+be_save(plot = plt.test)
+
+## Saved with custom file name, with size half heigh full width
+be_save(plot = plt.test, filename = "Gfx/CUSTOM_NAME.png", size_ppt = "halfwide")
+
+## Saved in custom folder, created if it doesn't already exist
+be_save(plot = plt.test, folder = "CUSTOM_FOLDER")
 }
 \keyword{ggplot,}
 \keyword{ggthemes,}
