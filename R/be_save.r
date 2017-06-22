@@ -24,7 +24,6 @@
 #' be_save(plot = plt.test, folder = "CUSTOM_FOLDER")
 
 
-
 #-----------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------
 # FUNCTION
@@ -42,8 +41,8 @@ be_save <- function(plot = NULL,
 
     require(ggplot2)
 
+    ## Handling empty function parameter "plot"
     if (!exists(paste0(deparse(substitute(plot)))) == T) {
-        ## Handling empty function parameter "plot"
 
         stop("Unrecognizable plot input. Remember to use quotes when inputting plot")
 
@@ -87,9 +86,9 @@ be_save <- function(plot = NULL,
             height = 6.3
             width = 12.6
 
-        } else return(print("Unrecognizable size_ppt. Use 'quarter', 'half high', 'half wide',
-                                or 'full'. Sizes are of a PPT slide. Alternatively use the height
-                            and width variables to specify size in cm."))
+        } else stop("Unrecognizable size_ppt. Use 'quarter', 'half high', 'half wide',
+                    or 'full'. Sizes are of a PPT slide. Alternatively use the height
+                    and width variables to specify size in cm.")
 
         ## Save the plot with size based on size_ppt
         return(
