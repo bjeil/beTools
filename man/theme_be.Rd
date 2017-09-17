@@ -24,4 +24,3 @@ theme_be()
 \keyword{ggplot,}
 \keyword{ggthemes,}
 \keyword{theme}
-

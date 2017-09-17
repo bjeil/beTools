@@ -34,4 +34,3 @@ be_save(plot = plt.test, folder = "CUSTOM_FOLDER")
 \keyword{ggplot,}
 \keyword{ggthemes,}
 \keyword{theme}
-
