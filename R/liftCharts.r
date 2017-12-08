@@ -8,6 +8,10 @@
 #' @keywords lift, gain, charts, plots, dplyr, ggplot
 #' @export
 #' @examples
+#' df <- lift(truth, preds, groups = 10)
+#' df$liftchart
+#' df$gainchart
+#' df$gaintable
 
 ### FUNCTION
 ################################################################################
