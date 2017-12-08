@@ -19,7 +19,6 @@ Use theme(axis.line.x = element_blank(), axis.line.y=element_blank()) to remove 
 ggplot(df, aes(x = x)) +
 geom_histogram() +
 theme_be()
-theme_be()
 }
 \keyword{ggplot,}
 \keyword{ggthemes,}

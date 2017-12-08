@@ -6,20 +6,17 @@
 #' @export
 #' @examples
 
-#-----------------------------------------------------------------------------------------------
-#-----------------------------------------------------------------------------------------------
-# VIM plot of missing variables
-#-----------------------------------------------------------------------------------------------
-#-----------------------------------------------------------------------------------------------
+### FUNCTION
+################################################################################
 
-missingPlot <- 
-    function(data, prop = FALSE, numbers = TRUE, sortVars = TRUE, 
-             ylab = c("Missing data", "Pattern"), colors = c('lightgrey', 'red'), 
+missingPlot <-
+    function(data, prop = FALSE, numbers = TRUE, sortVars = TRUE,
+             ylab = c("Missing data", "Pattern"), colors = c('lightgrey', 'red'),
              gap = 3, cex.axis = .7
     ) {
-        
+
         require(VIM)
-        
+
         ## Plots missing varialbles
         aggr(data, col=c('lightgrey', 'red')
              , numbers = numbers

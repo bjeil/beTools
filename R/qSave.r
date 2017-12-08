@@ -1,6 +1,6 @@
 #' Custom settings for ggsave
 #'
-#' Custom preset settings for ggsave, fitting for PPT presentations.
+#' Custom preset settings for ggsave, with custom sizes for PPT presentations.
 #' @param
 #' plot = plot object (without quotes)
 #' filename = filename including folder structure from working directory
@@ -11,52 +11,43 @@
 #' @keywords ggplot, ggthemes, theme
 #' @export
 #' @examples
-#' ## After creating plot, use be_save() to save the plot with preset options
+#' ## After creating plot, use qSave() to save the plot with preset options
 #'
 #' ## Filename created from the supplied plot object name, folder "./Gfx"
 #' ## created in working directory, plot saved with default (quarter ppt) size.
-#' be_save(plot = plt.test)
+#' qSave(plot = plt.test)
 #'
 #' ## Saved with custom file name, with size half heigh full width
-#' be_save(plot = plt.test, filename = "Gfx/CUSTOM_NAME.png", size_ppt = "halfwide")
+#' qSave(plot = plt.test, filename = "Gfx/CUSTOM_NAME.png", size_ppt = "halfwide")
 #'
 #' ## Saved in custom folder, created if it doesn't already exist
-#' be_save(plot = plt.test, folder = "CUSTOM_FOLDER")
+#' qSave(plot = plt.test, folder = "CUSTOM_FOLDER")
 
+### FUNCTION
+################################################################################
 
-#-----------------------------------------------------------------------------------------------
-#-----------------------------------------------------------------------------------------------
-# FUNCTION
-#-----------------------------------------------------------------------------------------------
-#-----------------------------------------------------------------------------------------------
-
-be_save <- function(plot = NULL,
+qSave <- function(plot = NULL,
                     filename = "",
-                    folder = "Gfx",
+                    folder = "figs",
                     dpi = 700,
                     size_ppt = "quarter",
                     height = 0,
                     width = 0
 ) {
-
-    require(ggplot2)
+    if(!require(ggplot2)){
+        install.packages("ggplot2")
+        library(ggplot2)
+    }
 
     ## Handling empty function parameter "plot"
     if (!exists(paste0(deparse(substitute(plot)))) == T) {
-
         stop("Unrecognizable plot input. Remember to use quotes when inputting plot")
-
-        #return(print("Unrecognizable plot input. Remember to use quotes when inputting plot"))
-
     }
 
     ## Creating folder if it does not exist
     if(!dir.exists(file.path(paste0(getwd(), "/", folder)))) {
-
         dir.create(file.path(paste0(getwd(), "/", folder)))
-
         print(paste0("Folder created at ", file.path(paste0(getwd(), "/", folder))))
-
     }
 
     ## Handling filename if function parameter empty
@@ -64,28 +55,20 @@ be_save <- function(plot = NULL,
 
     ## Handling height and width parameters
     if (height == 0 | width == 0) {  # Checking if height or width stated
+
         ## If no height or width is defined, check size_ppt parameter
-
         if (size_ppt == "quarter") {
-
             height = 3.15
             width = 6.3
-
         } else if (size_ppt == "half high") {
-
             height = 6.3
             width = 6.3
-
         } else if (size_ppt == "half wide") {
-
             height = 3.15
             width = 12.6
-
         } else if (size_ppt == "full") {
-
             height = 6.3
             width = 12.6
-
         } else stop("Unrecognizable size_ppt. Use 'quarter', 'half high', 'half wide',
                     or 'full'. Sizes are of a PPT slide. Alternatively use the height
                     and width variables to specify size in cm.")
@@ -95,15 +78,12 @@ be_save <- function(plot = NULL,
             ggsave(plot, filename = filename, dpi = dpi, device = "png",
                    height = unit(height, "cm"), width = unit(width, "cm"))
         )
-
     } else {
-
         ## Save plot with supplied height and width parameters
         return(
             ggsave(plot, filename = filename, dpi = dpi, device = "png",
                    height = unit(height, "cm"), width = unit(width, "cm"))
         )
-
     }
 }
 
